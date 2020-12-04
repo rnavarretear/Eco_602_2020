@@ -254,15 +254,27 @@ Using code chunks, create the following plots.
 
 # A scatterplot of body mass and body length
 
-plot(body_mass ~ body_length, data = delomys)
+plot(body_mass ~ body_length, 
+     data = delomys,
+     main = "Scatterplot of Delomys species:
+     Body Length vs. Body Mass",
+     xlab = "Body Length",
+     ylab = "Body Mass")
 
 ```
+
+**Qualitatively describe the relationship between body mass and length.
+Does the relationship seem linear, curved, nonexistent?**
+
+The relationship seems to be linear although there are some larger body length values (over 200) for average body mass values. However, we do see a linear pattern for most of the values.
 
 ```{r }
 
 # A histogram of body mass
 
-hist(delomys$body_mass)
+hist(delomys$body_mass,
+     main = "Histogram of Delomys species: Body Mass",
+     xlab = "Body Mass")
 
 ```
 
@@ -270,15 +282,34 @@ hist(delomys$body_mass)
 
 # A histogram of body length
 
-hist(delomys$body_length)
+hist(delomys$body_length,
+     main = "Histogram of Delomys species: Body Length",
+     xlab = "Body Length")
 
 ```
+
+**Qualitatively describe the shapes of the histograms.
+Do the data appear normally-distributed? Explain why or why not.**
+
+The Histogram of Delomys species: Body Mass does have a very normal pattern, since most of the values are concentrated in the center of the distribution and the amount of values decrease in both tails.
+
+As for the Histogram of Delomys species: Body Length, we can see an approximate normal pattern because most values are concentrated in what seems to be the center of the distribution. However, it is not as clearly defined as the previous histogram was, since in the tail located in the right part of the distribution there are ranges with no values at all (160-180, 180-200), but most extreme ranges (200-220, 220-240) do present values, although they are not many.
+
+**Using both the histograms and normality tests, do you think the (unconditioned) body masses and body length are normally-distributed?
+Contrast your visual assessment of normality to the results of the numerical normality tests.**
+
+The p-value obtained by the Shapiro test for the body mass values is 4.33e-05 and the p-value obtained by the Shapiro test for the body length values is 2.2e-16. Both are very small p-values, that would let us reject the null hypothesis of the values, both for body mass and body length, being normally distributed. However, there is a conflict between these values and the graphical interpretation, because in the histograms we can see normal patterns, although the normal pattern is more clearly defined for the histogram of body mass than for the histogram of body length. Since there is a conflict, I cannot assure that the body masses and body lengths are normally-distributed.
 
 ```{r }
 
 # A conditional boxplot of body mass, conditioned on species
 
-boxplot(body_mass ~ binomial, data = delomys)
+boxplot(body_mass ~ binomial, 
+        data = delomys,
+        main = "Boxplot of Delomys Body Mass:
+Conditioned on Species",
+        xlab = "Species",
+        ylab = "Body Mass")
 
 ```
 
@@ -286,7 +317,12 @@ boxplot(body_mass ~ binomial, data = delomys)
 
 # A conditional boxplot of body mass, conditioned on sex
 
-boxplot(body_mass ~ sex, data = delomys)
+boxplot(body_mass ~ sex, 
+        data = delomys,
+        main = "Boxplot of Delomys Body Mass:
+Conditioned on Sex",
+        xlab = "Sex",
+        ylab = "Body Mass")
 
 ```
 
@@ -294,9 +330,23 @@ boxplot(body_mass ~ sex, data = delomys)
 
 # A conditional boxplot of body mass,  conditioned on both species and sex
 
-boxplot(body_mass ~ binomial*sex, data = delomys)
+boxplot(body_mass ~ binomial*sex, 
+        data = delomys, 
+        main = "Boxplot of Delomys species:
+Conditioned on Species and Sex",
+        xlab = "Species : Sex",
+        ylab = "Body Mass",
+        names = c("D. dorsalis:female", "D. sublineatus:female", "D. dorsalis:male", "D. sublineatus:male"))
 
 ```
+
+**Examine the conditional boxplots. Describe any graphical evidence you see for body mass differences based on species and/or sex.**
+
+In the boxplot conditioned on species, we can appreciate that the Delomys dorsalis species seems to have heavier body masses than the Delomys sublineatus species.
+
+As for the boxplot conditioned on sex, we can see that male individuals seem to have heavier body masses than female individuals in the distribution.
+
+Finally, in the boxplot conditioned both on species and sex we can see the same pattern repeated, because if we compare between species of the same sex, we notice that the Delomys dorsalis individuals seem to be heavier in both cases. Also, if we compare between sexes of the same species, the boxplots how that the male individuals seem to be heavier than the female individuals.
 
 ## Model Building
 
@@ -308,10 +358,7 @@ Using a code chunk, fit 5 models using lm():
 
 # Model 1: simple linear regression body_length ~ body_mass
 
-
-lm(body_mass ~ body_length, data = delomys)
-
-fit1 = lm(body_mass ~ body_length, data = delomys)
+fit1 = lm(body_length ~ body_mass, data = delomys)
 
 fit1
 
@@ -320,8 +367,6 @@ fit1
 ```{r }
 
 # Model 2: 1-way ANOVA body_mass ~ sex
-
-lm(body_mass ~ sex, data = delomys)
 
 fit2 = lm(body_mass ~ sex, data = delomys)
 
@@ -333,8 +378,6 @@ fit2
 
 # Model 3: 1-way ANOVA body_mass ~ binomial
 
-lm(body_mass ~ binomial, data = delomys)
-
 fit3 = lm(body_mass ~ binomial, data = delomys)
 
 fit3
@@ -345,8 +388,6 @@ fit3
 
 # Model 4: 2-way additive ANOVA body_mass ~ sex + binomial
 
-lm(body_mass ~ sex + binomial, data = delomys)
-
 fit4 = lm(body_mass ~ sex + binomial, data = delomys)
 
 fit4
@@ -356,8 +397,6 @@ fit4
 ```{r }
 
 # Model 5: 2-way factorial ANOVA body_mass ~ sex * binomial
-
-lm(body_mass ~ sex * binomial, data = delomys)
 
 fit5 = lm(body_mass ~ sex * binomial, data = delomys)
 
@@ -425,6 +464,17 @@ shapiro.test(residuals(fit5))
 
 ```
 
+**What do you conclude about residual normality based on the numerical and graphical diagnostics?**
+The p-value for the first model, the simple linear regression, is by far the smallest one since it is 2.2e-16. None of the p-values are higher than 0.05, but the one for the second model (1-way ANOVA body_mass ~ sex) would be the highest one with 0.0001541. The p-values for the rest of the models are close to the half of this value. Therefore, the numerical exploration would indicate that we can reject the null hypothesis (the values of residuals being normally distributed) for all models.
+
+However, in the graphical exploration, we can see that there are normal patterns for the last four models. For the first model, although there is a peak of amount of residuals and the amount tends to decrease in both tails, the values are highly concentrated in two ranges and we can find extreme values located to the left of the distribution.
+
+There is a conflict between the numerical and the graphical diagnostics. However, since most populations tend to get normally distributed as its size increases, I would say it would be safe to assume a normal distribution for the residuals of the last four models. I would not assume a residual normality for the first model, since both the numerical and graphical explorations do not show normality.
+
+**Are violations of the normality assumption equally severe for all the models?**
+
+No. Violations of the normality distribution are much higher for the first model, both in a graphical and a numerical exploration. The other four models show an approximate normal pattern for the graphical exploration and their p-values are way higher than the one for the first model, 
+
 ## Model Interpretation
 
 ### Body Length
@@ -438,6 +488,19 @@ Print the model coefficient table using summary() and answer the following:
 knitr::kable(coef(summary(fit1)))
 
 ```
+
+**What is the magnitude of the mass/length relationship?**
+
+0.8755 mm/g
+
+**What is the expected body length of an an animal that weighs 100g?**
+
+163.67 mm
+
+**What is the expected body length of an animal that weighs 0g?**
+
+76.12 mm
+
 
 ### Body Mass: Model Coefficients
 
@@ -474,6 +537,22 @@ knitr::kable(coef(summary(fit4)))
 knitr::kable(coef(summary(fit5)))
 
 ```
+
+**What is the base level for sex?**
+
+Female.
+
+**What is the base level for binomial?**
+
+Delomys dorsalis.
+
+**Which sex is heavier?**
+
+Male.
+
+**Which species is heavier?**
+
+Delomys dorsalis.
 
 ### Body Mass: ANOVA
 
@@ -512,6 +591,19 @@ knitr::kable(anova(fit5))
 
 ```
 
+**Are sex and species significant predictors for body mass?**
+
+
+
+**Is there a significant interaction?**
+
+
+
+**Does the significance (as measured by p-value) of either of the main effects (sex and species) differ much between the single-predictor models, the additive model, and the interactive model?**
+
+
+
+
 ## Model Comparison: Body Mass
 
 You built four different models of body mass. How do you choose the best one?
@@ -537,3 +629,13 @@ AIC(fit4)
 
 AIC(fit5)
 ```
+
+**Which two models have the lowest AIC?**
+
+
+
+**Which of the two models with lowest AIC scores would you select?**
+
+
+
+**Explain your decision based on model fit and the complexity/understanding tradeoff**
