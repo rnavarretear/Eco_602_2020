@@ -1,7 +1,7 @@
 ---
 title: "ECo 602 - Analysis of Environmental Data"
 subtitle: "Final Project"
-author: "Your Name Here"
+author: "Roberto Navarrete Arias"
 date: "Fall 2020"
 output:
   html_document:
@@ -68,9 +68,6 @@ This creates tabbed content for all the following sections that are one-level be
 
 ## `c()`
 
-The following is the markdown text needed to reproduce my code example for `c()`:
-
-
 The function `c()` *combines* or *concatenates* its arguments into a vector (a 1-dimensional data structure consisting of 1 or more elements).
 
 - All of the elements must be of the same *type*.
@@ -99,6 +96,12 @@ print(char_vec)
 
 ## `data.frame()`
 
+The function `data.frame()` *combines* or *concatenates* its vectorized arguments into a data frame (a 2-dimensional data structure consisting of at least 2 elements).
+
+  - The elements can be of the same or of a different *type (numerical, character, logical)*.
+
+Here's two examples using numeric and character data types:
+
 ```{r data_frame_example_1}
 
 #Type your data frame example here.
@@ -114,9 +117,27 @@ dat_1
 
 dat_1$letters
 
+#Subset a column by place.
+
+##I should leave the first space blank because it refers to rows and only fill the second space, that refers to columns. Since I am writing the number "2", I will be getting the second column.
+
+dat_1[,2]
+
+#Subset an element by place.
+
+##In the first space, I should write the row where the element is located and in the second space, the column where the element is located. Since I want to get the element "123454", I will be writing "3" for row and "2" for column.
+
+dat_1[3,2]
+
 ```
 
 ## `matrix()`
+
+```{r matrix_example_1}
+
+
+
+```
 
 Type your matrix example here.
 
@@ -173,17 +194,346 @@ plot(bill_length_mm ~ body_mass_g,
 
 # Functions 4: Distribution Functions {.tabset .tabset-pills}
 
-See the final project description for a list of the required functions.
+## `dnorm()`
 
+## `pnorm()`
+
+## `qnorm()`
+
+## `dbinom()`
+
+## `pbinom()`
+
+## `qbinom()`
 
 
 # Functions 5: Other Functions {.tabset .tabset-pills}
 
-See the final project description for a list of the required functions.
+## `set()`
+
+## `libary() and require()`
+
+## `read.csv()`
+
+```{r read.csv}
+
+require(here)
 
 
+read.csv(here("data", "delomys.csv"))
 
+delomys = read.csv(here("data", "delomys.csv"))
+
+```
 
 # Part 2: Data Anaylsis
 
-Your data analysis materials will go here.
+## Data Exploration
+
+### Numerical Exploration
+
+```{r numerical exploration}
+
+# Use summary() on the body mass and body length data columns in the Delomys data set to display summary statistics.
+
+summary(delomys)
+
+# Perform a test of normality on the body mass and length columns. You can use shapiro.test()
+
+shapiro.test(delomys$body_mass)
+
+shapiro.test(delomys$body_length)
+
+```
+
+### Graphical Exploration
+
+Using code chunks, create the following plots.
+
+```{r fig.height=7, fig.width=11, fig.aspect=10}
+
+# A scatterplot of body mass and body length
+
+plot(body_mass ~ body_length, data = delomys)
+
+```
+
+```{r }
+
+# A histogram of body mass
+
+hist(delomys$body_mass)
+
+```
+
+```{r }
+
+# A histogram of body length
+
+hist(delomys$body_length)
+
+```
+
+```{r }
+
+# A conditional boxplot of body mass, conditioned on species
+
+boxplot(body_mass ~ binomial, data = delomys)
+
+```
+
+```{r }
+
+# A conditional boxplot of body mass, conditioned on sex
+
+boxplot(body_mass ~ sex, data = delomys)
+
+```
+
+```{r }
+
+# A conditional boxplot of body mass,  conditioned on both species and sex
+
+boxplot(body_mass ~ binomial*sex, data = delomys)
+
+```
+
+## Model Building
+
+We know that the normality assumption applies to the residual values after we fit a model.
+
+Using a code chunk, fit 5 models using lm():
+
+```{r }
+
+# Model 1: simple linear regression body_length ~ body_mass
+
+
+lm(body_mass ~ body_length, data = delomys)
+
+fit1 = lm(body_mass ~ body_length, data = delomys)
+
+fit1
+
+```
+
+```{r }
+
+# Model 2: 1-way ANOVA body_mass ~ sex
+
+lm(body_mass ~ sex, data = delomys)
+
+fit2 = lm(body_mass ~ sex, data = delomys)
+
+fit2
+
+```
+
+```{r }
+
+# Model 3: 1-way ANOVA body_mass ~ binomial
+
+lm(body_mass ~ binomial, data = delomys)
+
+fit3 = lm(body_mass ~ binomial, data = delomys)
+
+fit3
+
+```
+
+```{r }
+
+# Model 4: 2-way additive ANOVA body_mass ~ sex + binomial
+
+lm(body_mass ~ sex + binomial, data = delomys)
+
+fit4 = lm(body_mass ~ sex + binomial, data = delomys)
+
+fit4
+
+```
+
+```{r }
+
+# Model 5: 2-way factorial ANOVA body_mass ~ sex * binomial
+
+lm(body_mass ~ sex * binomial, data = delomys)
+
+fit5 = lm(body_mass ~ sex * binomial, data = delomys)
+
+fit5
+
+```
+
+## Model Diagnostics
+
+Let’s check whether our models fulfill the assumption of normality of the residuals.
+
+First, use a graphical approach: plot histograms of the model residuals.
+
+You can retrieve the model residuals using the residuals() function. For example, I could get the residuals from the first model using residuals(fit1).
+Use a code chunk to create histograms of the residuals of each of the 5 models.
+
+Next, use shapiro.test() on each model to test the null hypothesis that the residuals are drawn from a normally-distributed population.
+
+```{r }
+
+# Model 1: simple linear regression body_length ~ body_mass
+
+hist(residuals(fit1))
+
+shapiro.test(residuals(fit1))
+```
+
+```{r }
+
+# Model 2: 1-way ANOVA body_mass ~ sex
+
+hist(residuals(fit2))
+
+shapiro.test(residuals(fit2))
+
+```
+
+```{r }
+
+# Model 3: 1-way ANOVA body_mass ~ binomial
+
+hist(residuals(fit3))
+
+shapiro.test(residuals(fit3))
+
+```
+
+```{r }
+
+# Model 4: 2-way additive ANOVA body_mass ~ sex + binomial
+
+hist(residuals(fit4))
+
+shapiro.test(residuals(fit4))
+
+```
+
+```{r }
+
+# Model 5: 2-way factorial ANOVA body_mass ~ sex * binomial
+
+hist(residuals(fit5))
+
+shapiro.test(residuals(fit5))
+
+```
+
+## Model Interpretation
+
+### Body Length
+
+Print the model coefficient table using summary() and answer the following:
+
+```{r }
+
+# Model 1: simple linear regression body_length ~ body_mass
+
+knitr::kable(coef(summary(fit1)))
+
+```
+
+### Body Mass: Model Coefficients
+
+Print the model coefficient tables for each of the body mass model fits.
+
+```{r }
+
+# Model 2: 1-way ANOVA body_mass ~ sex
+
+knitr::kable(coef(summary(fit2)))
+
+```
+
+```{r }
+
+# Model 3: 1-way ANOVA body_mass ~ binomial
+
+knitr::kable(coef(summary(fit3)))
+
+```
+
+```{r }
+
+# Model 4: 2-way additive ANOVA body_mass ~ sex + binomial
+
+knitr::kable(coef(summary(fit4)))
+
+```
+
+```{r }
+
+# Model 5: 2-way factorial ANOVA body_mass ~ sex * binomial
+
+knitr::kable(coef(summary(fit5)))
+
+```
+
+### Body Mass: ANOVA
+
+Print the ANOVA tables for each of the body mass models.
+
+```{r }
+
+
+# Model 2: 1-way ANOVA body_mass ~ sex
+
+knitr::kable(anova(fit2))
+
+```
+
+```{r }
+
+# Model 3: 1-way ANOVA body_mass ~ binomial
+
+knitr::kable(anova(fit3))
+
+```
+
+```{r }
+
+# Model 4: 2-way additive ANOVA body_mass ~ sex + binomial
+
+knitr::kable(anova(fit4))
+
+```
+
+```{r }
+
+# Model 5: 2-way factorial ANOVA body_mass ~ sex * binomial
+
+knitr::kable(anova(fit5))
+
+```
+
+## Model Comparison: Body Mass
+
+You built four different models of body mass. How do you choose the best one?
+
+One option is to choose the model with the lowest AIC. You can calculate AIC using the appropriately named AIC() function.
+
+Create a code chunk that calculates the AIC values for each of the body mass models.
+
+```{r }
+# Model 2: 1-way ANOVA body_mass ~ sex
+
+AIC(fit2)
+
+# Model 3: 1-way ANOVA body_mass ~ binomial
+
+AIC(fit3)
+
+# Model 4: 2-way additive ANOVA body_mass ~ sex + binomial
+
+AIC(fit4)
+
+# Model 5: 2-way factorial ANOVA body_mass ~ sex * binomial
+
+AIC(fit5)
+```
