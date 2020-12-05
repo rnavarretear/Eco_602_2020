@@ -298,7 +298,7 @@ As for the Histogram of Delomys species: Body Length, we can see an approximate 
 **Using both the histograms and normality tests, do you think the (unconditioned) body masses and body length are normally-distributed?
 Contrast your visual assessment of normality to the results of the numerical normality tests.**
 
-The p-value obtained by the Shapiro test for the body mass values is 4.33e-05 and the p-value obtained by the Shapiro test for the body length values is 2.2e-16. Both are very small p-values, that would let us reject the null hypothesis of the values, both for body mass and body length, being normally distributed. However, there is a conflict between these values and the graphical interpretation, because in the histograms we can see normal patterns, although the normal pattern is more clearly defined for the histogram of body mass than for the histogram of body length. Since there is a conflict, I cannot assure that the body masses and body lengths are normally-distributed.
+The p-value obtained by the Shapiro test for the body mass values is 4.33e-05 and the p-value obtained by the Shapiro test for the body length values is 2.2e-16. Both are very small p-values, that would let us reject the null hypothesis of the values, both for body mass and body length (values being normally distributed). However, there is a conflict between these values and the graphical interpretation, because in the histograms we can see normal patterns, although the normal pattern is more clearly defined for the histogram of body mass than for the histogram of body length. Since there is a conflict, I cannot assure that the body masses and body lengths are normally-distributed, but I think that the data in the graphical exploration in this case is normal enough to assume that the values can be normally distributed.
 
 ```{r }
 
@@ -336,7 +336,7 @@ boxplot(body_mass ~ binomial*sex,
 Conditioned on Species and Sex",
         xlab = "Species : Sex",
         ylab = "Body Mass",
-        names = c("D. dorsalis:female", "D. sublineatus:female", "D. dorsalis:male", "D. sublineatus:male"))
+        names = c("Dorsalis:F", "Sublineatus:F", "Dorsalis:M", "Sublineatus:M"))
 
 ```
 
@@ -346,7 +346,7 @@ In the boxplot conditioned on species, we can appreciate that the Delomys dorsal
 
 As for the boxplot conditioned on sex, we can see that male individuals seem to have heavier body masses than female individuals in the distribution.
 
-Finally, in the boxplot conditioned both on species and sex we can see the same pattern repeated, because if we compare between species of the same sex, we notice that the Delomys dorsalis individuals seem to be heavier in both cases. Also, if we compare between sexes of the same species, the boxplots how that the male individuals seem to be heavier than the female individuals.
+Finally, in the boxplot conditioned both on species and sex we can see the same pattern repeated, because if we compare between species of the same sex, we notice that the Delomys dorsalis individuals seem to be heavier in both cases. Also, if we compare between sexes of the same species, the boxplots show that the male individuals seem to be heavier than the female individuals.
 
 ## Model Building
 
@@ -419,7 +419,10 @@ Next, use shapiro.test() on each model to test the null hypothesis that the resi
 
 # Model 1: simple linear regression body_length ~ body_mass
 
-hist(residuals(fit1))
+hist(residuals(fit1),
+     main = "Histogram of residuals for 
+     Model 1: simple linear regression body_length ~ body_mass",
+     xlab = "Residuals for Model 1: simple linear regression body_length ~ body_mass")
 
 shapiro.test(residuals(fit1))
 ```
@@ -428,7 +431,10 @@ shapiro.test(residuals(fit1))
 
 # Model 2: 1-way ANOVA body_mass ~ sex
 
-hist(residuals(fit2))
+hist(residuals(fit2),
+     main = "Histogram of residuals for 
+     Model 2: 1-way ANOVA body_mass ~ sex",
+     xlab = "Residuals for Model 2: 1-way ANOVA body_mass ~ sex")
 
 shapiro.test(residuals(fit2))
 
@@ -438,7 +444,10 @@ shapiro.test(residuals(fit2))
 
 # Model 3: 1-way ANOVA body_mass ~ binomial
 
-hist(residuals(fit3))
+hist(residuals(fit3),
+     main = "Histogram of residuals for 
+     Model 3: 1-way ANOVA body_mass ~ binomial",
+     xlab = "Residuals for Model 3: 1-way ANOVA body_mass ~ binomial")
 
 shapiro.test(residuals(fit3))
 
@@ -448,7 +457,10 @@ shapiro.test(residuals(fit3))
 
 # Model 4: 2-way additive ANOVA body_mass ~ sex + binomial
 
-hist(residuals(fit4))
+hist(residuals(fit4),
+     main = "Histogram of residuals for 
+     Model 4: 2-way additive ANOVA body_mass ~ sex + binomial",
+     xlab = "Residuals for Model 4: 2-way additive ANOVA body_mass ~ sex + binomial")
 
 shapiro.test(residuals(fit4))
 
@@ -458,18 +470,22 @@ shapiro.test(residuals(fit4))
 
 # Model 5: 2-way factorial ANOVA body_mass ~ sex * binomial
 
-hist(residuals(fit5))
+hist(residuals(fit5),
+     main = "Histogram of residuals for 
+     Model 5: 2-way factorial ANOVA body_mass ~ sex * binomial",
+     xlab = "Residuals for Model 5: 2-way factorial ANOVA body_mass ~ sex * binomial")
 
 shapiro.test(residuals(fit5))
 
 ```
 
 **What do you conclude about residual normality based on the numerical and graphical diagnostics?**
+
 The p-value for the first model, the simple linear regression, is by far the smallest one since it is 2.2e-16. None of the p-values are higher than 0.05, but the one for the second model (1-way ANOVA body_mass ~ sex) would be the highest one with 0.0001541. The p-values for the rest of the models are close to the half of this value. Therefore, the numerical exploration would indicate that we can reject the null hypothesis (the values of residuals being normally distributed) for all models.
 
-However, in the graphical exploration, we can see that there are normal patterns for the last four models. For the first model, although there is a peak of amount of residuals and the amount tends to decrease in both tails, the values are highly concentrated in two ranges and we can find extreme values located to the left of the distribution.
+However, in the graphical exploration, we can see that there are normal patterns for the last four models. For the first model, although there is a peak of amount of residuals and the amount tends to decrease in both tails, the values are very highly concentrated in two ranges and we cannot see a pattern that seems to be normal.
 
-There is a conflict between the numerical and the graphical diagnostics. However, since most populations tend to get normally distributed as its size increases, I would say it would be safe to assume a normal distribution for the residuals of the last four models. I would not assume a residual normality for the first model, since both the numerical and graphical explorations do not show normality.
+There is a conflict between the numerical and the graphical diagnostics. However, I would say it would be safe to assume a normal distribution for the residuals of the last four models. I would not assume a residual normality for the first model, since both the numerical and graphical explorations do not show normality.
 
 **Are violations of the normality assumption equally severe for all the models?**
 
@@ -593,16 +609,31 @@ knitr::kable(anova(fit5))
 
 **Are sex and species significant predictors for body mass?**
 
-
+Yes. Both p-values are extremely low (0.0001951 for sex and 0 for species), so, we can reject the null hypothesis of ANOVA (the average value of body mass being the same for all groups). Therefore, both sex and species are significant predictors for body mass.
 
 **Is there a significant interaction?**
 
-
+No. The p-value for the interaction between sex and species is extremely high (0.9504424), so, we cannot reject the null hypothesis of ANOVA (the average value of body mass being the same for all groups). Therefore, the interaction between sex and species is not significant.
 
 **Does the significance (as measured by p-value) of either of the main effects (sex and species) differ much between the single-predictor models, the additive model, and the interactive model?**
 
+***Sex:***
 
+Single-predictor: 0.0001951
 
+Additive: 0.0001144
+
+Interactive: 0.0001150
+
+***Species:***
+
+Single-predictor:0
+
+Additive: 0
+
+Interactive: 0
+
+So, the answer would be no for both.The significance of sex differs by a very little amount among models and the significance  of species does not differ at all among models.
 
 ## Model Comparison: Body Mass
 
@@ -632,10 +663,14 @@ AIC(fit5)
 
 **Which two models have the lowest AIC?**
 
+Model 4: 12896.73
 
+Model 5: 12898.72
 
 **Which of the two models with lowest AIC scores would you select?**
 
-
+Model 4: 2-way additive ANOVA body_mass ~ sex + binomial
 
 **Explain your decision based on model fit and the complexity/understanding tradeoff**
+
+I would choose Model 4 not only because it has the lowest AIC value, but also because with the ANOVA analysis that we performed for each model, we could verify that both sex and species are significant predictors for body mass, but the interaction between sex and species is not significant. Therefore, I do not think it would be necessary to include the interaction of Model 5 in the final model.
