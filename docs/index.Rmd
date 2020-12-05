@@ -18,7 +18,7 @@ knitr::opts_chunk$set(message = FALSE)
 options(knitr.duplicate.label = TRUE)
 ```
 
-Everything above this line is the header.
+
 
 
 <!-- The following text won't be displayed in your document.  It tells R how to make nicer looking buttons for your tabbed content. -->
@@ -37,15 +37,6 @@ Everything above this line is the header.
     border-color: #ffffff;
 }
 </style>
-
-
-Use this document as a template to build your final project.
-
-If you've already created the file index.Rmd in your docs folder, you can paste everything below the header into that document.
-
-If you don't yet have an index.Rmd file, save this document as index.Rmd in the docs folder of your main class folder.
-
-Edit this template to fill in your own content.
 
 
 # Introduction
@@ -70,7 +61,7 @@ This creates tabbed content for all the following sections that are one-level be
 
 The function `c()` *combines* or *concatenates* its arguments into a vector (a 1-dimensional data structure consisting of 1 or more elements).
 
-- All of the elements must be of the same *type*.
+  - All of the elements must be of the same *type*.
   - I can't combine character and numeric types in the same call to `c()`
 
 Here's two examples using numeric and character data types:
@@ -83,7 +74,7 @@ num_vec  = c(1, 4, 8, 9, 13)
 char_vec = c("a", "fish", "data is cool")
 ```
 
-I can show the contents of a vector by typing the name of the vector, or using the `print()` function.
+#I can show the contents of a vector by typing the name of the vector, or using the `print()` function.
 
 ```{r}
 # Typing the name of the vector into the console prints the contents
@@ -104,7 +95,7 @@ Here's two examples using numeric and character data types:
 
 ```{r data_frame_example_1}
 
-#Type your data frame example here.
+#Type your data frame example here. In the arguments, we write the vectors that will be part of this data frame. For this case, the first vector will be of character type and the second vector of numerical type.
 
 dat_1 = data.frame(letters = c("b", "w", "B"),
            numbers_1 = c(34, 6, 123454))
@@ -123,6 +114,12 @@ dat_1$letters
 
 dat_1[,2]
 
+#Subset a row by place.
+
+##I should leave the second space blank because it refers to columns and only fill the first space, that refers to rows. Since I am writing the number "3", I will be getting the third row.
+
+dat_1[3,]
+
 #Subset an element by place.
 
 ##In the first space, I should write the row where the element is located and in the second space, the column where the element is located. Since I want to get the element "123454", I will be writing "3" for row and "2" for column.
@@ -133,17 +130,51 @@ dat_1[3,2]
 
 ## `matrix()`
 
+The function `matrix()` *combines* or *concatenates* its vectorized arguments into a matrix (a 2-dimensional data structure consisting of at least 2 elements).
+
+   - All of the elements must be of the same *type*..
+
+Here's two examples using numeric and character data types:
+
 ```{r matrix_example_1}
 
+#Type your matrix example here. In the first argument, we write the elements of the matrix. In this case, the matrix will be of numerical type with numbers from 1 to 21. In the second argument, we put the number of rows that the matrix will have and in the third argument, the number of columns.
+
+mat_1 = matrix(1:21, 
+               nrow = 3, 
+               ncol = 7)
 
 
+#I can print the contents by typing the names of the matrix
+
+mat_1
+
+#The matrix is filled by column by default. If we want to fill it by row, we can add the byrow argument with a logical value of TRUE.
+
+mat_2 = matrix(1:21, nrow = 3, 
+               ncol = 7, 
+               byrow = TRUE)
+
+mat_2
 ```
-
-Type your matrix example here.
-
 
 ## `length()`
 
+```{r length_example_1}
+
+#Function "length" is used to get length of vectors
+
+length(num_vec)
+
+#It does not matter if the elements of the vector are not numerical
+
+length(char_vec)
+
+#It can also be used for other R objects, such as matrix
+
+length(mat_2)
+
+```
 
 ## `nrow()`
 

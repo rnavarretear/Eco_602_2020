@@ -1538,7 +1538,6 @@ div.tocify {
 </div>
 
 
-<p>Everything above this line is the header.</p>
 <!-- The following text won't be displayed in your document.  It tells R how to make nicer looking buttons for your tabbed content. -->
 <style type="text/css" rel="stylesheet">
 
@@ -1554,10 +1553,6 @@ div.tocify {
     border-color: #ffffff;
 }
 </style>
-<p>Use this document as a template to build your final project.</p>
-<p>If you’ve already created the file index.Rmd in your docs folder, you can paste everything below the header into that document.</p>
-<p>If you don’t yet have an index.Rmd file, save this document as index.Rmd in the docs folder of your main class folder.</p>
-<p>Edit this template to fill in your own content.</p>
 <div id="introduction" class="section level1">
 <h1>Introduction</h1>
 <p>Type a brief introduction here.</p>
@@ -1574,10 +1569,8 @@ div.tocify {
 <h2><code>c()</code></h2>
 <p>The function <code>c()</code> <em>combines</em> or <em>concatenates</em> its arguments into a vector (a 1-dimensional data structure consisting of 1 or more elements).</p>
 <ul>
-<li>All of the elements must be of the same <em>type</em>.
-<ul>
+<li>All of the elements must be of the same <em>type</em>.</li>
 <li>I can’t combine character and numeric types in the same call to <code>c()</code></li>
-</ul></li>
 </ul>
 <p>Here’s two examples using numeric and character data types:</p>
 <pre class="r"><code># Create a vector of numbers:
@@ -1585,7 +1578,7 @@ num_vec  = c(1, 4, 8, 9, 13)
 
 # Create a vector of characters:
 char_vec = c(&quot;a&quot;, &quot;fish&quot;, &quot;data is cool&quot;)</code></pre>
-<p>I can show the contents of a vector by typing the name of the vector, or using the <code>print()</code> function.</p>
+<p>#I can show the contents of a vector by typing the name of the vector, or using the <code>print()</code> function.</p>
 <pre class="r"><code># Typing the name of the vector into the console prints the contents
 num_vec</code></pre>
 <pre><code>## [1]  1  4  8  9 13</code></pre>
@@ -1600,7 +1593,7 @@ print(char_vec)</code></pre>
 <li>The elements can be of the same or of a different <em>type (numerical, character, logical)</em>.</li>
 </ul>
 <p>Here’s two examples using numeric and character data types:</p>
-<pre class="r"><code>#Type your data frame example here.
+<pre class="r"><code>#Type your data frame example here. In the arguments, we write the vectors that will be part of this data frame. For this case, the first vector will be of character type and the second vector of numerical type.
 
 dat_1 = data.frame(letters = c(&quot;b&quot;, &quot;w&quot;, &quot;B&quot;),
            numbers_1 = c(34, 6, 123454))
@@ -1622,6 +1615,13 @@ dat_1$letters</code></pre>
 
 dat_1[,2]</code></pre>
 <pre><code>## [1]     34      6 123454</code></pre>
+<pre class="r"><code>#Subset a row by place.
+
+##I should leave the second space blank because it refers to columns and only fill the first space, that refers to rows. Since I am writing the number &quot;3&quot;, I will be getting the third row.
+
+dat_1[3,]</code></pre>
+<pre><code>##   letters numbers_1
+## 3       B    123454</code></pre>
 <pre class="r"><code>#Subset an element by place.
 
 ##In the first space, I should write the row where the element is located and in the second space, the column where the element is located. Since I want to get the element &quot;123454&quot;, I will be writing &quot;3&quot; for row and &quot;2&quot; for column.
@@ -1631,10 +1631,51 @@ dat_1[3,2]</code></pre>
 </div>
 <div id="matrix" class="section level2">
 <h2><code>matrix()</code></h2>
-<p>Type your matrix example here.</p>
+<p>The function <code>matrix()</code> <em>combines</em> or <em>concatenates</em> its vectorized arguments into a matrix (a 2-dimensional data structure consisting of at least 2 elements).</p>
+<ul>
+<li>All of the elements must be of the same <em>type</em>..</li>
+</ul>
+<p>Here’s two examples using numeric and character data types:</p>
+<pre class="r"><code>#Type your matrix example here. In the first argument, we write the elements of the matrix. In this case, the matrix will be of numerical type with numbers from 1 to 21. In the second argument, we put the number of rows that the matrix will have and in the third argument, the number of columns.
+
+mat_1 = matrix(1:21, 
+               nrow = 3, 
+               ncol = 7)
+
+
+#I can print the contents by typing the names of the matrix
+
+mat_1</code></pre>
+<pre><code>##      [,1] [,2] [,3] [,4] [,5] [,6] [,7]
+## [1,]    1    4    7   10   13   16   19
+## [2,]    2    5    8   11   14   17   20
+## [3,]    3    6    9   12   15   18   21</code></pre>
+<pre class="r"><code>#The matrix is filled by column by default. If we want to fill it by row, we can add the byrow argument with a logical value of TRUE.
+
+mat_2 = matrix(1:21, nrow = 3, 
+               ncol = 7, 
+               byrow = TRUE)
+
+mat_2</code></pre>
+<pre><code>##      [,1] [,2] [,3] [,4] [,5] [,6] [,7]
+## [1,]    1    2    3    4    5    6    7
+## [2,]    8    9   10   11   12   13   14
+## [3,]   15   16   17   18   19   20   21</code></pre>
 </div>
 <div id="length" class="section level2">
 <h2><code>length()</code></h2>
+<pre class="r"><code>#Function &quot;length&quot; is used to get length of vectors
+
+length(num_vec)</code></pre>
+<pre><code>## [1] 5</code></pre>
+<pre class="r"><code>#It does not matter if the elements of the vector are not numerical
+
+length(char_vec)</code></pre>
+<pre><code>## [1] 3</code></pre>
+<pre class="r"><code>#It can also be used for other R objects, such as matrix
+
+length(mat_2)</code></pre>
+<pre><code>## [1] 21</code></pre>
 </div>
 <div id="nrow" class="section level2">
 <h2><code>nrow()</code></h2>

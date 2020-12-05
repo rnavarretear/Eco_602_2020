@@ -51,3 +51,5 @@ fit_both = lm(body_mass_g ~ sex * species, data = penguins)
 fit_both
 
 summary(fit_both)
+
+3368.84 + 158.37
