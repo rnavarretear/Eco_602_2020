@@ -260,18 +260,29 @@ See the final project description for a list of the required functions.
 
 I can use `plot()` to create scatterplots!
 
-```{r scatterplot_1, fig.asp=0.75, fig.height=20}
+```{r scatterplot_1, fig.asp=0.75}
 
-#load the penguins package:
-
-require(palmerpenguins)
-
-#using formula notation
-#pch argument to change the symbol
+#I use formula notation (data column  on the y axis ~ data column  on the x axis, data = dataset)
+#The "col" argument is used to specify the point color. In this case, 4 means that the color will be blue.
+#The "pch" argument is used to specify the point shape. In this case, 17 means that the point shape will be a triangle.
+#The "cex" argument is used to specify the point size. In this case, 0.75 means 75% of the default size.
+#The "main" argument is used to enter the title of the scatterplot and must be written between quotation marks.
+#The "xlab" argument is used to enter the name of the x-axis and must be written between quotation marks.
+#The "ylab" argument is used to enter the name of the y-axis and must be written between quotation marks.
+#The "xlim" argument is used to enter the limits of the x-axis and must be entered as a vector: c(lower limit, upper limit)
+#The "ylim" argument is used to enter the limits of the y-axis and must be entered as a vector: c(lower limit, upper limit)
 
 plot(bill_length_mm ~ body_mass_g,
      data = penguins,
-     pch = 16)
+     col = 4,
+     pch = 17,
+     cex = 0.75, 
+     main = "Scatterplot of Body Mass vs. Body Length", 
+     xlab = "Body Mass (g)",
+     ylab = "Body Length (mm)",
+     xlim = c(2500, 6500), 
+     ylim = c(30, 60)
+)
 
 ```
 ## `boxplot()`
@@ -311,6 +322,8 @@ require(here)
 read.csv(here("data", "delomys.csv"))
 
 delomys = read.csv(here("data", "delomys.csv"))
+
+head(delomys)
 
 ```
 
