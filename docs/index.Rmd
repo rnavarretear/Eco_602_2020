@@ -213,13 +213,44 @@ dim(dat_1)
 
 ## `summary()`
 
+Function "summary" shows summaries of the results of various model fitting functions. 
 
+```{r summary_example_1}
+
+#Load the penguins package:
+
+require(palmerpenguins)
+
+#Run the summary function for the penguins data set to get general information about the data set
+
+summary(penguins)
+```
 
 ## `mean()`
 
+Function "mean" shows the mean value for a group of values
+
+```{r mean_example_1}
+
+#Run the mean function for the values of bill length (in mm) for the penguins data set to get the mean value of this group of values
+
+#We include the argument na.rm = TRUE so the function can get the mean of the expressed values, ignoring the blank spaces
+
+mean(penguins$bill_length_mm, na.rm = TRUE)
+```
+
 ## `sd()`
  
+Function "sd" shows the standard deviation value for a group of values
 
+```{r sd_example_1}
+
+#Run the sd function for the values of bill length (in mm) for the penguins data set to get the mean value of this group of values
+
+#We include the argument na.rm = TRUE so the function can get the standard deviation of the expressed values, ignoring the blank spaces
+
+sd(penguins$bill_length_mm, na.rm = TRUE)
+```
 
 # Functions 3: Graphical Data Exploration {.tabset .tabset-pills}
 
