@@ -162,7 +162,7 @@ mat_2
 
 ```{r length_example_1}
 
-#Function "length" is used to get length of vectors
+#Function "length" is used to get the number of elements of vectors
 
 length(num_vec)
 
@@ -178,16 +178,42 @@ length(mat_2)
 
 ## `nrow()`
 
+```{r nrow_example_1}
+
+#Function "nrow" returns the number of rows present in an R object, like a matrix or a data frame
+
+nrow(mat_1)
+
+nrow(dat_1)
+```
 
 ## `ncol()`
 
+```{r ncol_example_1}
+
+#Function "ncol" returns the number of columns present in an R object, like a matrix or a data frame
+
+ncol(mat_1)
+
+ncol(dat_1)
+```
 
 ## `dim()`
 
+```{r dim_example_1}
+
+#Function "dim" retrieves the dimensions of an R object, like a matrix or a data frame. The first element shown will be the number of rows and the second eement shown will be the number of columns
+
+dim(mat_1)
+
+dim(dat_1)
+```
 
 # Functions 2: Numerical Data Exploration  {.tabset .tabset-pills}
 
 ## `summary()`
+
+
 
 ## `mean()`
 
