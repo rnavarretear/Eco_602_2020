@@ -258,7 +258,7 @@ See the final project description for a list of the required functions.
 
 ## `plot()`
 
-I can use `plot()` to create scatterplots!
+I can use `plot()` to create scatterplots.
 
 ```{r scatterplot_1, fig.asp=0.75}
 
@@ -279,17 +279,70 @@ plot(bill_length_mm ~ body_mass_g,
      cex = 0.75, 
      main = "Scatterplot of Body Mass vs. Body Length", 
      xlab = "Body Mass (g)",
-     ylab = "Body Length (mm)",
+     ylab = "Bill Length (mm)",
      xlim = c(2500, 6500), 
      ylim = c(30, 60)
 )
 
 ```
-## `boxplot()`
 
 ## `hist()`
 
-## `par()` and ## `mfrow=`
+I can use `hist()` to create histograms.
+
+```{r histogram_1, fig.asp=0.75}
+
+#I use formula notation (data column  on the y axis ~ data column  on the x axis, data = dataset)
+#The "col" argument is used to specify the color of the bars. In this case, 4 means that the color will be blue.
+#The "main" argument is used to enter the title of the scatterplot and must be written between quotation marks.
+#The "xlab" argument is used to enter the name of the x-axis and must be written between quotation marks.
+#The name of the y axis is "Frequency" by default
+#The "breaks" arguments is used to set the number of breakpoints. A vector also can be entered, one that specifies the breakpoints.
+
+hist(penguins$body_mass_g,
+     col = 4,
+     main = "Histogram of Body Mass",
+     xlab = "Body Mass (g)",
+     breaks = 35
+     )
+
+hist(penguins$body_mass_g,
+     col = 4,
+     main = "Histogram of Body Mass",
+     xlab = "Body Mass (g)",
+     breaks = c(2600,2800,3000,3200,3400,3600,3800,4000,4200,4400,4600,4800,5000,5200,5400,5600,5800,6000,6200,6400)
+     )
+
+```
+
+## `boxplot()`
+
+I can use `boxplot()` to create boxplots.
+
+```{r boxplot_1, fig.asp=0.75}
+
+#I use formula notation (data  on the y axis ~ categorical variable  on the x axis, data = dataset)
+#The "main" argument is used to enter the title of the scatterplot and must be written between quotation marks.
+#The "xlab" argument is used to enter the name of the x-axis and must be written between quotation marks.
+#The "ylab" argument is used to enter the name of the y-axis and must be written between quotation marks.
+
+
+boxplot(penguins$body_mass_g,
+        main = "Boxplot of Body Mass",
+        ylab = "Body Mass (g)"
+        )
+
+boxplot(body_mass_g ~ species,
+        data = penguins,
+        main = "Boxplot of Body Mass:
+Conditioned on Species",
+        xlab = "Species",
+        ylab = "Body Mass (g)"
+        )
+
+```
+
+## `par()
 
 # Functions 4: Distribution Functions {.tabset .tabset-pills}
 
