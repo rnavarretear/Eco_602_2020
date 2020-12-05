@@ -260,16 +260,24 @@ See the final project description for a list of the required functions.
 
 I can use `plot()` to create scatterplots.
 
-```{r scatterplot_1, fig.asp=0.75}
+```{r scatterplot_1, fig.asp=0.75,fig.width=10}
 
 #I use formula notation (data column  on the y axis ~ data column  on the x axis, data = dataset)
+
 #The "col" argument is used to specify the point color. In this case, 4 means that the color will be blue.
+
 #The "pch" argument is used to specify the point shape. In this case, 17 means that the point shape will be a triangle.
+
 #The "cex" argument is used to specify the point size. In this case, 0.75 means 75% of the default size.
+
 #The "main" argument is used to enter the title of the scatterplot and must be written between quotation marks.
+
 #The "xlab" argument is used to enter the name of the x-axis and must be written between quotation marks.
+
 #The "ylab" argument is used to enter the name of the y-axis and must be written between quotation marks.
+
 #The "xlim" argument is used to enter the limits of the x-axis and must be entered as a vector: c(lower limit, upper limit)
+
 #The "ylim" argument is used to enter the limits of the y-axis and must be entered as a vector: c(lower limit, upper limit)
 
 plot(bill_length_mm ~ body_mass_g,
@@ -290,13 +298,18 @@ plot(bill_length_mm ~ body_mass_g,
 
 I can use `hist()` to create histograms.
 
-```{r histogram_1, fig.asp=0.75}
+```{r histogram_1, fig.asp=0.75,fig.width=10}
 
 #I use formula notation (data column  on the y axis ~ data column  on the x axis, data = dataset)
+
 #The "col" argument is used to specify the color of the bars. In this case, 4 means that the color will be blue.
+
 #The "main" argument is used to enter the title of the scatterplot and must be written between quotation marks.
+
 #The "xlab" argument is used to enter the name of the x-axis and must be written between quotation marks.
+
 #The name of the y axis is "Frequency" by default
+
 #The "breaks" arguments is used to set the number of breakpoints. A vector also can be entered, one that specifies the breakpoints.
 
 hist(penguins$body_mass_g,
@@ -319,11 +332,14 @@ hist(penguins$body_mass_g,
 
 I can use `boxplot()` to create boxplots.
 
-```{r boxplot_1, fig.asp=0.75}
+```{r boxplot_1, fig.asp=0.75,fig.width=10}
 
 #I use formula notation (data  on the y axis ~ categorical variable  on the x axis, data = dataset)
+
 #The "main" argument is used to enter the title of the scatterplot and must be written between quotation marks.
+
 #The "xlab" argument is used to enter the name of the x-axis and must be written between quotation marks.
+
 #The "ylab" argument is used to enter the name of the y-axis and must be written between quotation marks.
 
 
@@ -342,26 +358,145 @@ Conditioned on Species",
 
 ```
 
-## `par()
+## `par()`
+
+I can uses `par()` to combine multiple plots into one overall graph
+
+```{r par_1, fig.asp=0.85, fig.width=10}
+
+#The argument "mfrow" allows us to put a vector that indicates how many rows and how many columns we want in the graph mfrow=c( number of rows, number of columns). It also indicates that the plots will fill in the graph by the row.
+
+#For example, we can make a graph of 1 row and 3 columns, that contains 3 boxplots.
+
+par(mfrow = c(1,3))
+
+boxplot(penguins$body_mass_g,
+        main = "Boxplot of Body Mass",
+        ylab = "Body Mass (g)"
+        )
+
+boxplot(body_mass_g ~ species,
+        data = penguins,
+        main = "Boxplot of Body Mass:
+Conditioned on Species",
+        xlab = "Species",
+        ylab = "Body Mass (g)"
+        )
+
+boxplot(body_mass_g ~ sex,
+        data = penguins,
+        main = "Boxplot of Body Mass:
+Conditioned on Sex",
+        xlab = "Sex",
+        ylab = "Body Mass (g)"
+        )
+
+#Also, we can make a graph of 2 rows and 2 columns, that contains 4 histograms.
+
+par(mfrow = c(2,2))
+
+hist(penguins$body_mass_g,
+     col = 4,
+     main = "10 Breaks",
+     xlab = "Body Mass (g)",
+     breaks = 10
+     )
+
+hist(penguins$body_mass_g,
+     col = 4,
+     main = "20 Breaks",
+     xlab = "Body Mass (g)",
+     breaks = 20
+     )
+
+hist(penguins$body_mass_g,
+     col = 4,
+     main = "35 Breaks",
+     xlab = "Body Mass (g)",
+     breaks = 35
+     )
+
+hist(penguins$body_mass_g,
+     col = 4,
+     main = "70 Breaks",
+     xlab = "Body Mass (g)",
+     breaks = 70
+     )
+
+
+```
 
 # Functions 4: Distribution Functions {.tabset .tabset-pills}
 
 ## `dnorm()`
 
+```{r dnorm_1}
+
+#Load 
+
+#Run 
+
+
+```
+
 ## `pnorm()`
+
+```{r pnorm_1}
+
+#Load 
+
+#Run 
+
+
+```
 
 ## `qnorm()`
 
+```{r qnorm_1}
+
+#Load 
+
+#Run 
+
+
+```
+
 ## `dbinom()`
+
+```{r dbinom_1}
+
+#Load 
+
+#Run 
+
+
+```
 
 ## `pbinom()`
 
+```{r pbinom_1}
+
+#Load 
+
+#Run 
+
+
+```
+
 ## `qbinom()`
 
+```{r qbinom_1}
+
+#Load 
+
+#Run 
+
+
+```
 
 # Functions 5: Other Functions {.tabset .tabset-pills}
 
-## `set()`
+## `subset()`
 
 ## `libary() and require()`
 
