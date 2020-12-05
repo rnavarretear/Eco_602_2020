@@ -260,7 +260,7 @@ See the final project description for a list of the required functions.
 
 I can use `plot()` to create scatterplots!
 
-```{r scatterplot_1, fig.asp=1.5, fig.height=20}
+```{r scatterplot_1, fig.asp=0.75, fig.height=20}
 
 #load the penguins package:
 
