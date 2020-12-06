@@ -154,9 +154,9 @@ mat_2
 
 ## `length()`
 
-```{r length_example_1}
+Function "length" is used to get the number of elements of vectors
 
-# Function "length" is used to get the number of elements of vectors
+```{r length_example_1}
 
 length(num_vec)
 
@@ -172,9 +172,9 @@ length(mat_2)
 
 ## `nrow()`
 
-```{r nrow_example_1}
+Function "nrow" returns the number of rows present in an R object, like a matrix or a data frame
 
-# Function "nrow" returns the number of rows present in an R object, like a matrix or a data frame
+```{r nrow_example_1}
 
 nrow(mat_1)
 
@@ -183,9 +183,9 @@ nrow(dat_1)
 
 ## `ncol()`
 
-```{r ncol_example_1}
+Function "ncol" returns the number of columns present in an R object, like a matrix or a data frame
 
-# Function "ncol" returns the number of columns present in an R object, like a matrix or a data frame
+```{r ncol_example_1}
 
 ncol(mat_1)
 
@@ -194,9 +194,9 @@ ncol(dat_1)
 
 ## `dim()`
 
-```{r dim_example_1}
+Function "dim" retrieves the dimensions of an R object, like a matrix or a data frame. The first element shown will be the number of rows and the second element shown will be the number of columns
 
-# Function "dim" retrieves the dimensions of an R object, like a matrix or a data frame. The first element shown will be the number of rows and the second element shown will be the number of columns
+```{r dim_example_1}
 
 dim(mat_1)
 
@@ -861,7 +861,7 @@ There is a conflict between the numerical and the graphical diagnostics. However
 
 **Are violations of the normality assumption equally severe for all the models?**
 
-No. Violations of the normality distribution are much higher for the first model, both in a graphical and a numerical exploration. The other four models show an approximate normal pattern for the graphical exploration and their p-values are way higher than the one for the first model, 
+No. Violations of the normality distribution are much higher for the first model, both in a graphical and a numerical exploration. The other four models show an approximate normal pattern for the graphical exploration and their p-values are way higher than the one for the first model. 
 
 ## Model Interpretation
 
@@ -1005,7 +1005,7 @@ Additive: 0
 
 Interactive: 0
 
-So, the answer would be no for both.The significance of sex differs by a very little amount among models and the significance  of species does not differ at all among models.
+So, the answer would be no for both. The significance of sex differs by a very little amount among models and the significance  of species does not differ at all among models.
 
 ## Model Comparison: Body Mass
 

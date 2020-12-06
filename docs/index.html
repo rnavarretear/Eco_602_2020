@@ -1661,9 +1661,8 @@ mat_2</code></pre>
 </div>
 <div id="length" class="section level2">
 <h2><code>length()</code></h2>
-<pre class="r"><code># Function &quot;length&quot; is used to get the number of elements of vectors
-
-length(num_vec)</code></pre>
+<p>Function “length” is used to get the number of elements of vectors</p>
+<pre class="r"><code>length(num_vec)</code></pre>
 <pre><code>## [1] 5</code></pre>
 <pre class="r"><code># It does not matter if the elements of the vector are not numerical
 
@@ -1676,27 +1675,24 @@ length(mat_2)</code></pre>
 </div>
 <div id="nrow" class="section level2">
 <h2><code>nrow()</code></h2>
-<pre class="r"><code># Function &quot;nrow&quot; returns the number of rows present in an R object, like a matrix or a data frame
-
-nrow(mat_1)</code></pre>
+<p>Function “nrow” returns the number of rows present in an R object, like a matrix or a data frame</p>
+<pre class="r"><code>nrow(mat_1)</code></pre>
 <pre><code>## [1] 3</code></pre>
 <pre class="r"><code>nrow(dat_1)</code></pre>
 <pre><code>## [1] 3</code></pre>
 </div>
 <div id="ncol" class="section level2">
 <h2><code>ncol()</code></h2>
-<pre class="r"><code># Function &quot;ncol&quot; returns the number of columns present in an R object, like a matrix or a data frame
-
-ncol(mat_1)</code></pre>
+<p>Function “ncol” returns the number of columns present in an R object, like a matrix or a data frame</p>
+<pre class="r"><code>ncol(mat_1)</code></pre>
 <pre><code>## [1] 7</code></pre>
 <pre class="r"><code>ncol(dat_1)</code></pre>
 <pre><code>## [1] 2</code></pre>
 </div>
 <div id="dim" class="section level2">
 <h2><code>dim()</code></h2>
-<pre class="r"><code># Function &quot;dim&quot; retrieves the dimensions of an R object, like a matrix or a data frame. The first element shown will be the number of rows and the second element shown will be the number of columns
-
-dim(mat_1)</code></pre>
+<p>Function “dim” retrieves the dimensions of an R object, like a matrix or a data frame. The first element shown will be the number of rows and the second element shown will be the number of columns</p>
+<pre class="r"><code>dim(mat_1)</code></pre>
 <pre><code>## [1] 3 7</code></pre>
 <pre class="r"><code>dim(dat_1)</code></pre>
 <pre><code>## [1] 3 2</code></pre>
@@ -2383,7 +2379,7 @@ hist(residuals(fit5),
 <p>However, in the graphical exploration, we can see that there are normal patterns for the last four models. For the first model, although there is a peak of amount of residuals and the amount tends to decrease in both tails, the values are very highly concentrated in two ranges and we cannot see a pattern that seems to be normal.</p>
 <p>There is a conflict between the numerical and the graphical diagnostics. However, I would say it would be safe to assume a normal distribution for the residuals of the last four models. I would not assume a residual normality for the first model, since both the numerical and graphical explorations do not show normality.</p>
 <p><strong>Are violations of the normality assumption equally severe for all the models?</strong></p>
-<p>No. Violations of the normality distribution are much higher for the first model, both in a graphical and a numerical exploration. The other four models show an approximate normal pattern for the graphical exploration and their p-values are way higher than the one for the first model,</p>
+<p>No. Violations of the normality distribution are much higher for the first model, both in a graphical and a numerical exploration. The other four models show an approximate normal pattern for the graphical exploration and their p-values are way higher than the one for the first model.</p>
 </div>
 <div id="model-interpretation" class="section level2">
 <h2>Model Interpretation</h2>
@@ -2759,7 +2755,7 @@ knitr::kable(anova(fit5))</code></pre>
 <p>Single-predictor:0</p>
 <p>Additive: 0</p>
 <p>Interactive: 0</p>
-<p>So, the answer would be no for both.The significance of sex differs by a very little amount among models and the significance of species does not differ at all among models.</p>
+<p>So, the answer would be no for both. The significance of sex differs by a very little amount among models and the significance of species does not differ at all among models.</p>
 </div>
 </div>
 <div id="model-comparison-body-mass" class="section level2">
