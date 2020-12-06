@@ -1916,48 +1916,102 @@ hist(penguins$body_mass_g,
 <h1>Functions 4: Distribution Functions</h1>
 <div id="dnorm" class="section level2">
 <h2><code>dnorm()</code></h2>
-<pre class="r"><code>#Load 
+<p>The function <code>dnorm()</code> indicates the probability of observing a measurement with a specific value in a normal distribution, given a mean and a standard deviation.</p>
+<pre class="r"><code>#The first argument (x) must be the specific value of which I want to know the probability of being observed in a normal distribution. The second argument is the mean of this normal distribution and the third argument is its standard deviation.
 
-#Run </code></pre>
+dnorm(52, mean = 47, sd = 3.4)</code></pre>
+<pre><code>## [1] 0.03979441</code></pre>
+<pre class="r"><code>#The closer the specific value is to the mean, the greater the probability of being observed will be.
+
+dnorm(51, mean = 47, sd = 3.4)</code></pre>
+<pre><code>## [1] 0.05873289</code></pre>
+<pre class="r"><code>dnorm(49, mean = 47, sd = 3.4)</code></pre>
+<pre><code>## [1] 0.09869467</code></pre>
 </div>
 <div id="pnorm" class="section level2">
 <h2><code>pnorm()</code></h2>
-<pre class="r"><code>#Load 
+<p>The function <code>pnorm()</code> indicates the cumulative probability of observing a measurement up to a specific value in a normal distribution, given a mean and a standard deviation.</p>
+<pre class="r"><code>#The first argument (q) must be the value until which I want to know the cumulative probability of measurements that have been observed in a normal distribution. The second argument is the mean of this normal distribution and the third argument is its standard deviation. 
 
-#Run </code></pre>
+#Basically, we are getting the probability of the measurement being less than the value written in q.
+
+pnorm(52, mean = 47, sd = 3.4)</code></pre>
+<pre><code>## [1] 0.9292987</code></pre>
+<pre class="r"><code>#If we want to know the probability of the measurement being greater than the value written in q, we should subtract our function from 1
+
+1 - pnorm(52, mean = 47, sd = 3.4)</code></pre>
+<pre><code>## [1] 0.07070125</code></pre>
 </div>
 <div id="qnorm" class="section level2">
 <h2><code>qnorm()</code></h2>
-<pre class="r"><code>#Load 
+<p>The function <code>qnorm()</code> indicates the value up to which a stated probability has been accumulated in a normal distribution, given a mean and a standard deviation. It is the inverse of the <code>pnorm()</code></p>
+<pre class="r"><code>#The first argument (p) must be the cumulative probability of observing a value (a value that we do not know yet) in a normal distribution. The second argument is the mean of this normal distribution and the third argument is its standard deviation. 
 
-#Run </code></pre>
+#Let&#39;s try the cumulative probability that we got in the previous function with a value of 52: 0.9292987
+
+qnorm(0.9292987, mean = 47, sd = 3.4) </code></pre>
+<pre><code>## [1] 52</code></pre>
 </div>
 <div id="dbinom" class="section level2">
 <h2><code>dbinom()</code></h2>
-<pre class="r"><code>#Load 
+<p>The function <code>dbinom()</code> gives us the probability of getting a certain number of successes (x) in a certain number of trials (size) where the probability of success on each trial is fixed (prob).</p>
+<pre class="r"><code>#The first argument (x) must be the number of successes of which I want to know the probability in a binomial distribution. The second argument is the number of trials (size) and the third argument is the fixed probability of success of each trial. 
 
-#Run </code></pre>
+#The probability of getting 35 successes with 100 trials and a probability of success for each trial of 0.4
+
+dbinom(35, size = 100, prob = 0.4)</code></pre>
+<pre><code>## [1] 0.04913282</code></pre>
+<pre class="r"><code>#The probability of getting 47 successes with 100 trials and a probability of success for each trial of 0.4
+
+dbinom(47, size = 100, prob = 0.4)</code></pre>
+<pre><code>## [1] 0.02919091</code></pre>
+<pre class="r"><code>#The probability of getting 28 successes with 100 trials and a probability of success for each trial of 0.4
+
+dbinom(28, size = 100, prob = 0.4)</code></pre>
+<pre><code>## [1] 0.003832099</code></pre>
 </div>
 <div id="pbinom" class="section level2">
 <h2><code>pbinom()</code></h2>
-<pre class="r"><code>#Load 
+<p>The function <code>pbinom()</code> gives us the value of the cumulative density function of the binomial distribution given a specified variable q, number of trials (size) and probability of success on each trial (prob).</p>
+<pre class="r"><code>#The first argument (q) must be the value until which I want to know the cumulative probability of measurements that have been observed in a binomial distribution. The second argument is the number of trials (size) and the third argument is the fixed probability of success of each trial.
 
-#Run </code></pre>
+#Basically, we are getting the probability of the measurement being less than the value written in q.
+
+pbinom(47, size = 100, prob = 0.4)</code></pre>
+<pre><code>## [1] 0.9362108</code></pre>
+<pre class="r"><code>#If we want to know the probability of the measurement being greater than the value written in q, we should subtract our function from 1
+
+1 - pbinom(47, size = 100, prob = 0.4)</code></pre>
+<pre><code>## [1] 0.06378918</code></pre>
 </div>
 <div id="qbinom" class="section level2">
 <h2><code>qbinom()</code></h2>
-<pre class="r"><code>#Load 
+<p>The function <code>qbinom()</code>indicates the value up to which a stated probability has been accumulated in a normal distribution, given a mean and a standard deviation. It is the inverse of the <code>pbinom()</code></p>
+<pre class="r"><code>#The first argument (p) must be the cumulative probability of observing a value (a value that we do not know yet) in a binomial distribution. The second argument is the number of trials (size) and the third argument is the fixed probability of success of each trial.
 
-#Run </code></pre>
+#Let&#39;s try the cumulative probability that we got in the previous function with a value of 47: 0.9362108
+
+qbinom(0.9362108, size = 100, prob = 0.4) </code></pre>
+<pre><code>## [1] 47</code></pre>
 </div>
 </div>
 <div id="functions-5-other-functions" class="section level1 tabset tabset-pills">
 <h1>Functions 5: Other Functions</h1>
 <div id="subset" class="section level2">
 <h2><code>subset()</code></h2>
+<pre class="r"><code>#Load 
+
+#Run </code></pre>
 </div>
-<div id="libary-and-require" class="section level2">
-<h2><code>libary() and require()</code></h2>
+<div id="library-and-require" class="section level2">
+<h2><code>library() and require()</code></h2>
+<pre class="r"><code>#Load 
+
+require(here)
+
+#Run 
+
+library(here)</code></pre>
 </div>
 <div id="read.csv" class="section level2">
 <h2><code>read.csv()</code></h2>

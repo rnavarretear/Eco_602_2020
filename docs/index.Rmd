@@ -430,67 +430,105 @@ hist(penguins$body_mass_g,
 
 ## `dnorm()`
 
+The function `dnorm()` indicates the probability of observing a measurement with a specific value in a normal distribution, given a mean and a standard deviation.
+
 ```{r dnorm_1}
 
-#Load 
+#The first argument (x) must be the specific value of which I want to know the probability of being observed in a normal distribution. The second argument is the mean of this normal distribution and the third argument is its standard deviation.
 
-#Run 
+dnorm(52, mean = 47, sd = 3.4)
 
+#The closer the specific value is to the mean, the greater the probability of being observed will be.
+
+dnorm(51, mean = 47, sd = 3.4)
+
+dnorm(49, mean = 47, sd = 3.4)
 
 ```
 
 ## `pnorm()`
 
+The function `pnorm()` indicates the cumulative probability of observing a measurement up to a specific value in a normal distribution, given a mean and a standard deviation.
+
 ```{r pnorm_1}
 
-#Load 
+#The first argument (q) must be the value until which I want to know the cumulative probability of measurements that have been observed in a normal distribution. The second argument is the mean of this normal distribution and the third argument is its standard deviation. 
 
-#Run 
+#Basically, we are getting the probability of the measurement being less than the value written in q.
 
+pnorm(52, mean = 47, sd = 3.4)
+
+#If we want to know the probability of the measurement being greater than the value written in q, we should subtract our function from 1
+
+1 - pnorm(52, mean = 47, sd = 3.4)
 
 ```
 
 ## `qnorm()`
 
+The function `qnorm()` indicates the value up to which a stated probability has been accumulated in a normal distribution, given a mean and a standard deviation. It is the inverse of the `pnorm()`
+
 ```{r qnorm_1}
 
-#Load 
+#The first argument (p) must be the cumulative probability of observing a value (a value that we do not know yet) in a normal distribution. The second argument is the mean of this normal distribution and the third argument is its standard deviation. 
 
-#Run 
+#Let's try the cumulative probability that we got in the previous function with a value of 52: 0.9292987
+
+qnorm(0.9292987, mean = 47, sd = 3.4) 
 
 
 ```
 
 ## `dbinom()`
 
+The function `dbinom()` gives us the probability of getting a certain number of successes (x) in a certain number of trials (size) where the probability of success on each trial is fixed (prob).
+
 ```{r dbinom_1}
 
-#Load 
+#The first argument (x) must be the number of successes of which I want to know the probability in a binomial distribution. The second argument is the number of trials (size) and the third argument is the fixed probability of success of each trial. 
 
-#Run 
+#The probability of getting 35 successes with 100 trials and a probability of success for each trial of 0.4
 
+dbinom(35, size = 100, prob = 0.4)
+
+#The probability of getting 47 successes with 100 trials and a probability of success for each trial of 0.4
+
+dbinom(47, size = 100, prob = 0.4)
+
+#The probability of getting 28 successes with 100 trials and a probability of success for each trial of 0.4
+
+dbinom(28, size = 100, prob = 0.4)
 
 ```
 
 ## `pbinom()`
 
+The function `pbinom()` gives us the value of the cumulative density function of the binomial distribution given a specified variable q, number of trials (size) and probability of success on each trial (prob).
+
 ```{r pbinom_1}
 
-#Load 
+#The first argument (q) must be the value until which I want to know the cumulative probability of measurements that have been observed in a binomial distribution. The second argument is the number of trials (size) and the third argument is the fixed probability of success of each trial.
 
-#Run 
+#Basically, we are getting the probability of the measurement being less than the value written in q.
 
+pbinom(47, size = 100, prob = 0.4)
 
+#If we want to know the probability of the measurement being greater than the value written in q, we should subtract our function from 1
+
+1 - pbinom(47, size = 100, prob = 0.4)
 ```
 
 ## `qbinom()`
 
+The function `qbinom()`indicates the value up to which a stated probability has been accumulated in a normal distribution, given a mean and a standard deviation. It is the inverse of the `pbinom()`
+
 ```{r qbinom_1}
 
-#Load 
+#The first argument (p) must be the cumulative probability of observing a value (a value that we do not know yet) in a binomial distribution. The second argument is the number of trials (size) and the third argument is the fixed probability of success of each trial.
 
-#Run 
+#Let's try the cumulative probability that we got in the previous function with a value of 47: 0.9362108
 
+qbinom(0.9362108, size = 100, prob = 0.4) 
 
 ```
 
@@ -498,7 +536,28 @@ hist(penguins$body_mass_g,
 
 ## `subset()`
 
-## `libary() and require()`
+```{r subset}
+
+#Load 
+
+#Run 
+
+
+```
+
+## `library() and require()`
+
+```{r library_require}
+
+#Load 
+
+require(here)
+
+#Run 
+
+library(here)
+
+```
 
 ## `read.csv()`
 
