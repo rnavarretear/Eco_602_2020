@@ -622,7 +622,7 @@ shapiro.test(delomys$body_length)
 
 Using code chunks, create the following plots.
 
-```{r fig.height=7, fig.width=11, fig.aspect=10}
+```{r fig.asp=0.75, fig.width=10}
 
 # A scatterplot of body mass and body length
 
@@ -640,7 +640,7 @@ Does the relationship seem linear, curved, nonexistent?**
 
 The relationship seems to be linear although there are some larger body length values (over 200) for average body mass values. However, we do see a linear pattern for most of the values.
 
-```{r }
+```{r fig.asp=0.75, fig.width=10}
 
 # A histogram of body mass
 
@@ -650,7 +650,7 @@ hist(delomys$body_mass,
 
 ```
 
-```{r }
+```{r fig.asp=0.75, fig.width=10}
 
 # A histogram of body length
 
@@ -672,7 +672,7 @@ Contrast your visual assessment of normality to the results of the numerical nor
 
 The p-value obtained by the Shapiro test for the body mass values is 4.33e-05 and the p-value obtained by the Shapiro test for the body length values is 2.2e-16. Both are very small p-values, that would let us reject the null hypothesis of the values, both for body mass and body length (values being normally distributed). However, there is a conflict between these values and the graphical interpretation, because in the histograms we can see normal patterns, although the normal pattern is more clearly defined for the histogram of body mass than for the histogram of body length. Since there is a conflict, I cannot assure that the body masses and body lengths are normally-distributed, but I think that the data in the graphical exploration in this case is normal enough to assume that the values can be normally distributed.
 
-```{r }
+```{r fig.asp=0.75, fig.width=10}
 
 # A conditional boxplot of body mass, conditioned on species
 
@@ -685,7 +685,7 @@ Conditioned on Species",
 
 ```
 
-```{r }
+```{r fig.asp=0.75, fig.width=10}
 
 # A conditional boxplot of body mass, conditioned on sex
 
@@ -698,7 +698,7 @@ Conditioned on Sex",
 
 ```
 
-```{r }
+```{r fig.asp=0.75, fig.width=10}
 
 # A conditional boxplot of body mass,  conditioned on both species and sex
 
@@ -787,7 +787,7 @@ Use a code chunk to create histograms of the residuals of each of the 5 models.
 
 Next, use shapiro.test() on each model to test the null hypothesis that the residuals are drawn from a normally-distributed population.
 
-```{r }
+```{r fig.asp=0.75, fig.width=10}
 
 # Model 1: simple linear regression body_length ~ body_mass
 
@@ -799,7 +799,7 @@ hist(residuals(fit1),
 shapiro.test(residuals(fit1))
 ```
 
-```{r }
+```{r fig.asp=0.75, fig.width=10}
 
 # Model 2: 1-way ANOVA body_mass ~ sex
 
@@ -812,7 +812,7 @@ shapiro.test(residuals(fit2))
 
 ```
 
-```{r }
+```{r fig.asp=0.75, fig.width=10}
 
 # Model 3: 1-way ANOVA body_mass ~ binomial
 
@@ -825,7 +825,7 @@ shapiro.test(residuals(fit3))
 
 ```
 
-```{r }
+```{r fig.asp=0.75, fig.width=10}
 
 # Model 4: 2-way additive ANOVA body_mass ~ sex + binomial
 
@@ -838,7 +838,7 @@ shapiro.test(residuals(fit4))
 
 ```
 
-```{r }
+```{r fig.asp=0.75, fig.width=10}
 
 # Model 5: 2-way factorial ANOVA body_mass ~ sex * binomial
 
