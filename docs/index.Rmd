@@ -41,21 +41,15 @@ options(knitr.duplicate.label = TRUE)
 
 # Introduction
 
-Type a brief introduction here.
+This Final Project will contain two parts. 
 
+In the first one, I will explain, in simple words and using examples, some of the most important R functions that we have learned in this course. 
+
+In the second part, I will perform a data analysis for a given data set in order to decide which model would be a better fit for it.
+
+To produce this, all the knowledge obtained in this course has been used.
 
 # Functions 1: Data Structure Functions {.tabset .tabset-pills}
-
-Look at the source code for the final project template, you'll notice the text:
-
-{.tabset .tabset-pills}
-
-This creates tabbed content for all the following sections that are one-level below.
-
-- If you include them on a primary header (one #), all of the subsequent secondary headers will in tabs.
-
-
-
 
 ## `c()`
 
@@ -95,34 +89,34 @@ Here's two examples using numeric and character data types:
 
 ```{r data_frame_example_1}
 
-#Type your data frame example here. In the arguments, we write the vectors that will be part of this data frame. For this case, the first vector will be of character type and the second vector of numerical type.
+# Type your data frame example here. In the arguments, we write the vectors that will be part of this data frame. For this case, the first vector will be of character type and the second vector of numerical type.
 
 dat_1 = data.frame(letters = c("b", "w", "B"),
            numbers_1 = c(34, 6, 123454))
 
-#I can print the contents by typing the names of the data frame
+# I can print the contents by typing the names of the data frame
 
 dat_1
 
-#Subset a column by name
+# Subset a column by name
 
 dat_1$letters
 
-#Subset a column by place.
+# Subset a column by place.
 
-##I should leave the first space blank because it refers to rows and only fill the second space, that refers to columns. Since I am writing the number "2", I will be getting the second column.
+## I should leave the first space blank because it refers to rows and only fill the second space, that refers to columns. Since I am writing the number "2", I will be getting the second column.
 
 dat_1[,2]
 
-#Subset a row by place.
+# Subset a row by place.
 
-##I should leave the second space blank because it refers to columns and only fill the first space, that refers to rows. Since I am writing the number "3", I will be getting the third row.
+## I should leave the second space blank because it refers to columns and only fill the first space, that refers to rows. Since I am writing the number "3", I will be getting the third row.
 
 dat_1[3,]
 
-#Subset an element by place.
+# Subset an element by place.
 
-##In the first space, I should write the row where the element is located and in the second space, the column where the element is located. Since I want to get the element "123454", I will be writing "3" for row and "2" for column.
+## In the first space, I should write the row where the element is located and in the second space, the column where the element is located. Since I want to get the element "123454", I will be writing "3" for row and "2" for column.
 
 dat_1[3,2]
 
@@ -138,18 +132,18 @@ Here's two examples using numeric and character data types:
 
 ```{r matrix_example_1}
 
-#Type your matrix example here. In the first argument, we write the elements of the matrix. In this case, the matrix will be of numerical type with numbers from 1 to 21. In the second argument, we put the number of rows that the matrix will have and in the third argument, the number of columns.
+# Type your matrix example here. In the first argument, we write the elements of the matrix. In this case, the matrix will be of numerical type with numbers from 1 to 21. In the second argument, we put the number of rows that the matrix will have and in the third argument, the number of columns.
 
 mat_1 = matrix(1:21, 
                nrow = 3, 
                ncol = 7)
 
 
-#I can print the contents by typing the names of the matrix
+# I can print the contents by typing the names of the matrix
 
 mat_1
 
-#The matrix is filled by column by default. If we want to fill it by row, we can add the byrow argument with a logical value of TRUE.
+# The matrix is filled by column by default. If we want to fill it by row, we can add the byrow argument with a logical value of TRUE.
 
 mat_2 = matrix(1:21, nrow = 3, 
                ncol = 7, 
@@ -162,15 +156,15 @@ mat_2
 
 ```{r length_example_1}
 
-#Function "length" is used to get the number of elements of vectors
+# Function "length" is used to get the number of elements of vectors
 
 length(num_vec)
 
-#It does not matter if the elements of the vector are not numerical
+# It does not matter if the elements of the vector are not numerical
 
 length(char_vec)
 
-#It can also be used for other R objects, such as matrix
+# It can also be used for other R objects, such as matrix
 
 length(mat_2)
 
@@ -180,7 +174,7 @@ length(mat_2)
 
 ```{r nrow_example_1}
 
-#Function "nrow" returns the number of rows present in an R object, like a matrix or a data frame
+# Function "nrow" returns the number of rows present in an R object, like a matrix or a data frame
 
 nrow(mat_1)
 
@@ -191,7 +185,7 @@ nrow(dat_1)
 
 ```{r ncol_example_1}
 
-#Function "ncol" returns the number of columns present in an R object, like a matrix or a data frame
+# Function "ncol" returns the number of columns present in an R object, like a matrix or a data frame
 
 ncol(mat_1)
 
@@ -202,7 +196,7 @@ ncol(dat_1)
 
 ```{r dim_example_1}
 
-#Function "dim" retrieves the dimensions of an R object, like a matrix or a data frame. The first element shown will be the number of rows and the second eement shown will be the number of columns
+# Function "dim" retrieves the dimensions of an R object, like a matrix or a data frame. The first element shown will be the number of rows and the second element shown will be the number of columns
 
 dim(mat_1)
 
@@ -217,11 +211,11 @@ Function "summary" shows summaries of the results of various model fitting funct
 
 ```{r summary_example_1}
 
-#Load the penguins package:
+# Load the penguins package:
 
 require(palmerpenguins)
 
-#Run the summary function for the penguins data set to get general information about the data set
+# Run the summary function for the penguins data set to get general information about the data set
 
 summary(penguins)
 ```
@@ -232,9 +226,9 @@ Function "mean" shows the mean value for a group of values
 
 ```{r mean_example_1}
 
-#Run the mean function for the values of bill length (in mm) for the penguins data set to get the mean value of this group of values
+# Run the mean function for the values of bill length (in mm) for the penguins data set to get the mean value of this group of values
 
-#We include the argument na.rm = TRUE so the function can get the mean of the expressed values, ignoring the blank spaces
+# We include the argument na.rm = TRUE so the function can get the mean of the expressed values, ignoring the blank spaces
 
 mean(penguins$bill_length_mm, na.rm = TRUE)
 ```
@@ -245,9 +239,9 @@ Function "sd" shows the standard deviation value for a group of values
 
 ```{r sd_example_1}
 
-#Run the sd function for the values of bill length (in mm) for the penguins data set to get the mean value of this group of values
+# Run the sd function for the values of bill length (in mm) for the penguins data set to get the mean value of this group of values
 
-#We include the argument na.rm = TRUE so the function can get the standard deviation of the expressed values, ignoring the blank spaces
+# We include the argument na.rm = TRUE so the function can get the standard deviation of the expressed values, ignoring the blank spaces
 
 sd(penguins$bill_length_mm, na.rm = TRUE)
 ```
@@ -262,23 +256,23 @@ I can use `plot()` to create scatterplots.
 
 ```{r scatterplot_1, fig.asp=0.75,fig.width=10}
 
-#I use formula notation (data column  on the y axis ~ data column  on the x axis, data = dataset)
+# I use formula notation (data column  on the y axis ~ data column  on the x axis, data = dataset)
 
-#The "col" argument is used to specify the point color. In this case, 4 means that the color will be blue.
+# The "col" argument is used to specify the point color. In this case, 4 means that the color will be blue.
 
-#The "pch" argument is used to specify the point shape. In this case, 17 means that the point shape will be a triangle.
+# The "pch" argument is used to specify the point shape. In this case, 17 means that the point shape will be a triangle.
 
-#The "cex" argument is used to specify the point size. In this case, 0.75 means 75% of the default size.
+# The "cex" argument is used to specify the point size. In this case, 0.75 means 75% of the default size.
 
-#The "main" argument is used to enter the title of the scatterplot and must be written between quotation marks.
+# The "main" argument is used to enter the title of the scatterplot and must be written between quotation marks.
 
-#The "xlab" argument is used to enter the name of the x-axis and must be written between quotation marks.
+# The "xlab" argument is used to enter the name of the x-axis and must be written between quotation marks.
 
-#The "ylab" argument is used to enter the name of the y-axis and must be written between quotation marks.
+# The "ylab" argument is used to enter the name of the y-axis and must be written between quotation marks.
 
-#The "xlim" argument is used to enter the limits of the x-axis and must be entered as a vector: c(lower limit, upper limit)
+# The "xlim" argument is used to enter the limits of the x-axis and must be entered as a vector: c(lower limit, upper limit)
 
-#The "ylim" argument is used to enter the limits of the y-axis and must be entered as a vector: c(lower limit, upper limit)
+# The "ylim" argument is used to enter the limits of the y-axis and must be entered as a vector: c(lower limit, upper limit)
 
 plot(bill_length_mm ~ body_mass_g,
      data = penguins,
@@ -300,17 +294,17 @@ I can use `hist()` to create histograms.
 
 ```{r histogram_1, fig.asp=0.75,fig.width=10}
 
-#I use formula notation (data column  on the y axis ~ data column  on the x axis, data = dataset)
+# I use formula notation (data column  on the y axis ~ data column  on the x axis, data = dataset)
 
-#The "col" argument is used to specify the color of the bars. In this case, 4 means that the color will be blue.
+# The "col" argument is used to specify the color of the bars. In this case, 4 means that the color will be blue.
 
-#The "main" argument is used to enter the title of the scatterplot and must be written between quotation marks.
+# The "main" argument is used to enter the title of the scatterplot and must be written between quotation marks.
 
-#The "xlab" argument is used to enter the name of the x-axis and must be written between quotation marks.
+# The "xlab" argument is used to enter the name of the x-axis and must be written between quotation marks.
 
-#The name of the y axis is "Frequency" by default
+# The name of the y axis is "Frequency" by default
 
-#The "breaks" arguments is used to set the number of breakpoints. A vector also can be entered, one that specifies the breakpoints.
+# The "breaks" arguments is used to set the number of breakpoints. A vector also can be entered, one that specifies the breakpoints.
 
 hist(penguins$body_mass_g,
      col = 4,
@@ -334,13 +328,13 @@ I can use `boxplot()` to create boxplots.
 
 ```{r boxplot_1, fig.asp=0.75,fig.width=10}
 
-#I use formula notation (data  on the y axis ~ categorical variable  on the x axis, data = dataset)
+# I use formula notation (data  on the y axis ~ categorical variable  on the x axis, data = dataset)
 
-#The "main" argument is used to enter the title of the scatterplot and must be written between quotation marks.
+# The "main" argument is used to enter the title of the scatterplot and must be written between quotation marks.
 
-#The "xlab" argument is used to enter the name of the x-axis and must be written between quotation marks.
+# The "xlab" argument is used to enter the name of the x-axis and must be written between quotation marks.
 
-#The "ylab" argument is used to enter the name of the y-axis and must be written between quotation marks.
+# The "ylab" argument is used to enter the name of the y-axis and must be written between quotation marks.
 
 
 boxplot(penguins$body_mass_g,
@@ -364,9 +358,9 @@ I can uses `par()` to combine multiple plots into one overall graph
 
 ```{r par_1, fig.asp=0.85, fig.width=10}
 
-#The argument "mfrow" allows us to put a vector that indicates how many rows and how many columns we want in the graph mfrow=c( number of rows, number of columns). It also indicates that the plots will fill in the graph by the row.
+# The argument "mfrow" allows us to put a vector that indicates how many rows and how many columns we want in the graph mfrow=c( number of rows, number of columns). It also indicates that the plots will fill in the graph by the row.
 
-#For example, we can make a graph of 1 row and 3 columns, that contains 3 boxplots.
+# For example, we can make a graph of 1 row and 3 columns, that contains 3 boxplots.
 
 par(mfrow = c(1,3))
 
@@ -391,7 +385,7 @@ Conditioned on Sex",
         ylab = "Body Mass (g)"
         )
 
-#Also, we can make a graph of 2 rows and 2 columns, that contains 4 histograms.
+# Also, we can make a graph of 2 rows and 2 columns, that contains 4 histograms.
 
 par(mfrow = c(2,2))
 
@@ -434,11 +428,11 @@ The function `dnorm()` indicates the probability of observing a measurement with
 
 ```{r dnorm_1}
 
-#The first argument (x) must be the specific value of which I want to know the probability of being observed in a normal distribution. The second argument is the mean of this normal distribution and the third argument is its standard deviation.
+# The first argument (x) must be the specific value of which I want to know the probability of being observed in a normal distribution. The second argument is the mean of this normal distribution and the third argument is its standard deviation.
 
 dnorm(52, mean = 47, sd = 3.4)
 
-#The closer the specific value is to the mean, the greater the probability of being observed will be.
+# The closer the specific value is to the mean, the greater the probability of being observed will be.
 
 dnorm(51, mean = 47, sd = 3.4)
 
@@ -452,13 +446,13 @@ The function `pnorm()` indicates the cumulative probability of observing a measu
 
 ```{r pnorm_1}
 
-#The first argument (q) must be the value until which I want to know the cumulative probability of measurements that have been observed in a normal distribution. The second argument is the mean of this normal distribution and the third argument is its standard deviation. 
+# The first argument (q) must be the value until which I want to know the cumulative probability of measurements that have been observed in a normal distribution. The second argument is the mean of this normal distribution and the third argument is its standard deviation. 
 
-#Basically, we are getting the probability of the measurement being less than the value written in q.
+# Basically, we are getting the probability of the measurement being less than the value written in q.
 
 pnorm(52, mean = 47, sd = 3.4)
 
-#If we want to know the probability of the measurement being greater than the value written in q, we should subtract our function from 1
+# If we want to know the probability of the measurement being greater than the value written in q, we should subtract our function from 1
 
 1 - pnorm(52, mean = 47, sd = 3.4)
 
@@ -470,9 +464,9 @@ The function `qnorm()` indicates the value up to which a stated probability has 
 
 ```{r qnorm_1}
 
-#The first argument (p) must be the cumulative probability of observing a value (a value that we do not know yet) in a normal distribution. The second argument is the mean of this normal distribution and the third argument is its standard deviation. 
+# The first argument (p) must be the cumulative probability of observing a value (a value that we do not know yet) in a normal distribution. The second argument is the mean of this normal distribution and the third argument is its standard deviation. 
 
-#Let's try the cumulative probability that we got in the previous function with a value of 52: 0.9292987
+# Let's try the cumulative probability that we got in the previous function with a value of 52: 0.9292987
 
 qnorm(0.9292987, mean = 47, sd = 3.4) 
 
@@ -485,17 +479,17 @@ The function `dbinom()` gives us the probability of getting a certain number of 
 
 ```{r dbinom_1}
 
-#The first argument (x) must be the number of successes of which I want to know the probability in a binomial distribution. The second argument is the number of trials (size) and the third argument is the fixed probability of success of each trial. 
+# The first argument (x) must be the number of successes of which I want to know the probability in a binomial distribution. The second argument is the number of trials (size) and the third argument is the fixed probability of success of each trial. 
 
-#The probability of getting 35 successes with 100 trials and a probability of success for each trial of 0.4
+# The probability of getting 35 successes with 100 trials and a probability of success for each trial of 0.4
 
 dbinom(35, size = 100, prob = 0.4)
 
-#The probability of getting 47 successes with 100 trials and a probability of success for each trial of 0.4
+# The probability of getting 47 successes with 100 trials and a probability of success for each trial of 0.4
 
 dbinom(47, size = 100, prob = 0.4)
 
-#The probability of getting 28 successes with 100 trials and a probability of success for each trial of 0.4
+# The probability of getting 28 successes with 100 trials and a probability of success for each trial of 0.4
 
 dbinom(28, size = 100, prob = 0.4)
 
@@ -507,13 +501,13 @@ The function `pbinom()` gives us the value of the cumulative density function of
 
 ```{r pbinom_1}
 
-#The first argument (q) must be the value until which I want to know the cumulative probability of measurements that have been observed in a binomial distribution. The second argument is the number of trials (size) and the third argument is the fixed probability of success of each trial.
+# The first argument (q) must be the value until which I want to know the cumulative probability of measurements that have been observed in a binomial distribution. The second argument is the number of trials (size) and the third argument is the fixed probability of success of each trial.
 
-#Basically, we are getting the probability of the measurement being less than the value written in q.
+# Basically, we are getting the probability of the measurement being less than the value written in q.
 
 pbinom(47, size = 100, prob = 0.4)
 
-#If we want to know the probability of the measurement being greater than the value written in q, we should subtract our function from 1
+# If we want to know the probability of the measurement being greater than the value written in q, we should subtract our function from 1
 
 1 - pbinom(47, size = 100, prob = 0.4)
 ```
@@ -524,9 +518,9 @@ The function `qbinom()`indicates the value up to which a stated probability has 
 
 ```{r qbinom_1}
 
-#The first argument (p) must be the cumulative probability of observing a value (a value that we do not know yet) in a binomial distribution. The second argument is the number of trials (size) and the third argument is the fixed probability of success of each trial.
+# The first argument (p) must be the cumulative probability of observing a value (a value that we do not know yet) in a binomial distribution. The second argument is the number of trials (size) and the third argument is the fixed probability of success of each trial.
 
-#Let's try the cumulative probability that we got in the previous function with a value of 47: 0.9362108
+# Let's try the cumulative probability that we got in the previous function with a value of 47: 0.9362108
 
 qbinom(0.9362108, size = 100, prob = 0.4) 
 
@@ -536,39 +530,69 @@ qbinom(0.9362108, size = 100, prob = 0.4)
 
 ## `subset()`
 
+The `subset()` function is a way to select a group of variables depending on their characteristics.
+
 ```{r subset}
 
-#Load 
+# Using the penguins data set (it is the first argument), if we want to analyze only male penguins, we should write in the second argument the name of the column (sex), the symbol == and the characteristic that we wish to extract: "male". Since it is a variable of character type, it should be between quotation marks.
 
-#Run 
+malepenguins = subset(penguins, sex == "male")
 
+# We check this new object malepenguins with the summary function, that provides information. In the category of sex, there should be 0 female individuals.
 
+summary(malepenguins)
+
+# For the same data set, now we only need the penguins whose weight is heavier than 4700 g. The first argument is the same. In the second argument, we write the name of the column (body_mass_g), the symbol >= and 4700. Since it is a variable of numerical type, no quotation marks are needed.
+
+heavypenguins = subset(penguins, body_mass_g >= 4700)
+
+# We check this new object heavypenguins with the summary function, that provides information. In the category of body_mass_g, the minimum value should be 4700.
+
+summary(heavypenguins)
+
+# Finally, we want to analyze the Adelie and the Chinstrap penguins, excluding the ones from the Gentoo species. The first argument is the same. In the second argument, we write the name of the column (species), the symbol != and "Gentoo". Since it is a variable of character type, it should be between quotation marks.
+
+adeliechinstrap = subset(penguins, species != "Gentoo")
+
+# We check this new object adeliechinstrap with the summary function, that provides information. In the category of species, there should be 0 Gentoo individuals.
+
+summary(adeliechinstrap)
 ```
 
 ## `library() and require()`
 
+Both the `library()` function and the `require()` function are used to load packages that have been previously installed in R. However, there are some differences: the `library()` function loads the packages whether they are already loaded or not and gives an error message display if the desired package cannot be loaded; the `require()` function does not load the package again if it already loaded and if one package cannot be found it does not show an error, but just a warning message.
+
 ```{r library_require}
 
-#Load 
+# We will try to load the "here" package that will be needed later to read a file that is located in one of the subfolders of the main folder that we are working in.
 
-require(here)
-
-#Run 
+# First, we try the `library()` function 
 
 library(here)
 
+# Then, we try the `require()` function 
+
+require(here)
 ```
 
 ## `read.csv()`
 
+The `read.csv()` function is used to read CSV (comma-separated values) files, which are very commonly used in Excel.
+
 ```{r read.csv}
 
-require(here)
+# We will read the "delomys.csv" file that will be necessary for the second part of the final project. This file is not located in the main folder where our environment is located, but in one of its subfolders. This is why we will need to use the function "here" in the argument of read.csv(). Inside here(), there will be two arguments: in the first one we will write the name of the subfolder that contains the file and in the second one we will write the name of the file. Both arguments need to be between quotation marks.
 
-
-read.csv(here("data", "delomys.csv"))
+# We also will save the read file into an object called "delomys" so we can use it when we need it in the next part of the project.
 
 delomys = read.csv(here("data", "delomys.csv"))
+
+# To see if the file has been rightly read, we will apply the summary() function to the delomys object. It should provide information about the elements contained in the object.
+
+summary(delomys)
+
+# Also, we will use the head() function with the delomys object to see the first elements of this object.
 
 head(delomys)
 
